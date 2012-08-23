@@ -1,13 +1,10 @@
 # coursera-feed-parser
 
-A Clojure library designed to ... well, that part is up to you.
+A Clojure library designed to parse Coursera's feed with courses and
+output a *.csv file to be imported by Google Calendar.
 
 ## Usage
 
-FIXME
+In command line:
 
-## License
-
-Copyright © 2012 FIXME
-
-Distributed under the Eclipse Public License, the same as Clojure.
+```lein run -m coursera-feed-parser.core```
