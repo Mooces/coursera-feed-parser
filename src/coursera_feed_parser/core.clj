@@ -14,10 +14,14 @@
 (def months-exceptional {"Feb" "02"})
 
 (def month-num (merge
-                (apply hash-map (interleave months (map (fn [num] (format "%02d" num)) (range 1 13))))
+                (apply hash-map
+                       (interleave months
+                                   (map (fn [num] (format "%02d" num))
+                                        (range 1 13))))
                 months-exceptional))
 
-(def json-course-list-url "http://www.coursera.org/maestro/api/topic/list?full=1")
+(def json-course-list-url
+  "http://www.coursera.org/maestro/api/topic/list?full=1")
 
 (defn parse-date [date-string]
   (try+
@@ -27,7 +31,7 @@
        (format/parse date-formatter (str year (month-num month) (format "%02d" (Integer/parseInt day))))
        nil))
    (catch java.lang.NumberFormatException e
-     (println "Exception: " (.getMessage e)))))
+     (println "Could not parse date:" date-string))))
 
 (defn get-dates [courses]
   (loop [courses courses dates []]
